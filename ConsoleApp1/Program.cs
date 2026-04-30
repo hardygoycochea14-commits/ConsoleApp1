@@ -1,0 +1,59 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+class Program
+{
+    static void Main()
+    {
+        // 1. Inicializamos las variables contadoras que almacenarán la cantidad de carnets por categoría
+        int carnetsNuevos = 0;
+        int carnetsRenovacion = 0;
+        int carnetsVencidos = 0;
+
+        // 2. Definimos una variable de control para nuestro bucle
+        int i = 0;
+
+        Console.Write("Ingrese el número de estudiantes a evaluar: ");
+        int numEstudiantes = int.Parse(Console.ReadLine());
+
+        // 3. Utilizamos el bucle 'while' para iterar el proceso según la cantidad ingresada
+        while (i < numEstudiantes)
+        {
+            Console.Write($"\nIngrese el año de ingreso del estudiante {i + 1}: ");
+            int añoIngreso = int.Parse(Console.ReadLine());
+
+            // 4. Estructura condicional múltiple para clasificar según el año de ingreso
+            if (añoIngreso == 2025)
+            {
+                // Si el año es 2025, incrementamos el contador de nuevos
+                Console.WriteLine("Estado: Carnet nuevo.");
+                carnetsNuevos++;
+            }
+            else if (añoIngreso >= 2023 && añoIngreso <= 2024)
+            {
+                // Si el año está entre 2023 y 2024, incrementamos el contador de renovación
+                Console.WriteLine("Estado: Carnet en renovación.");
+                carnetsRenovacion++;
+            }
+            else if (añoIngreso < 2023)
+            {
+                // Si el año es anterior a 2023, incrementamos el contador de vencidos
+                Console.WriteLine("Estado: Carnet vencido, requiere trámite especial.");
+                carnetsVencidos++;
+            }
+
+            // 5. Incrementamos el contador para evitar un bucle infinito
+            i++;
+        }
+
+        // 6. Finalmente, mostramos el resumen consolidado de todos los estudiantes procesados
+        Console.WriteLine("\n=== RESUMEN FINAL DE LA EVALUACIÓN ===");
+        Console.WriteLine($"Total Carnets nuevos: {carnetsNuevos}");
+        Console.WriteLine($"Total Carnets en renovación: {carnetsRenovacion}");
+        Console.WriteLine($"Total Carnets vencidos: {carnetsVencidos}");
+    }
+}
